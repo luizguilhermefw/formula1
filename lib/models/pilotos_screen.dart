@@ -49,7 +49,7 @@ class PilotosScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: Colors.grey[300]!,
+                      color: Colors.grey,
                       width: 2.0,
                     ),
                   ),

@@ -10,14 +10,14 @@ class EquipesScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black, // Fundo preto
+        backgroundColor: Colors.black,
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween, // Alinhamento nas extremidades
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
               'Ranking de Equipes',
               style: TextStyle(
-                color: Colors.white, // Texto branco
+                color: Colors.white,
               ),
             ),
             const Text(
@@ -43,11 +43,13 @@ class EquipesScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final equipe = equipes[index];
           return ListTile(
-            contentPadding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 16.0),
+            contentPadding: const EdgeInsets.symmetric(
+                vertical: 4.0, horizontal: 16.0),
             leading: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('${index + 1}º '),Container(
+                Text('${index + 1}º '),
+                Container(
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
@@ -55,9 +57,15 @@ class EquipesScreen extends StatelessWidget {
                       width: 2.0,
                     ),
                   ),
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage(equipe.fotoPerfil),
-                    radius: 30,
+                  child: SizedBox( // Adicione o SizedBox
+                    height: 60,
+                    width: 60,
+                    child: ClipOval(
+                      child: Image.asset(
+                        equipe.fotoPerfil,
+                        fit: BoxFit.cover, // Use BoxFit.cover para cobrir o espaço
+                      ),
+                    ),
                   ),
                 ),
               ],

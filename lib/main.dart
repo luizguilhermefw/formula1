@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'models/pilotos_screen.dart';import 'models/equipes_screen.dart';
+import 'models/pilotos_screen.dart';
+import 'models/equipes_screen.dart';
 import 'models/corridas_screen.dart';
 import 'models/noticias_screen.dart';
-import 'models/curiosidades_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,8 +11,7 @@ void main() {
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  @override
-  MyAppState createState() => MyAppState();
+  @override MyAppState createState() => MyAppState();
 }
 
 class MyAppState extends State<MyApp> {
@@ -20,11 +19,10 @@ class MyAppState extends State<MyApp> {
   final PageController _pageController = PageController();
 
   static const List<Widget> _widgetOptions = <Widget>[
+    NoticiasScreen(),
     PilotosScreen(),
     EquipesScreen(),
-    CorridasScreen(),
-    NoticiasScreen(),
-    CuriosidadesScreen(),
+    CalendarioScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -39,6 +37,7 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Fórmula 1',
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Fórmula 1',
@@ -58,6 +57,10 @@ class MyAppState extends State<MyApp> {
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
+              icon: Icon(Icons.newspaper),
+              label: 'Notícias',
+            ),
+            BottomNavigationBarItem(
               icon: Icon(Icons.person),
               label: 'Pilotos',
             ),
@@ -68,14 +71,6 @@ class MyAppState extends State<MyApp> {
             BottomNavigationBarItem(
               icon: Icon(Icons.flag),
               label: 'Calendário',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.newspaper),
-              label: 'Notícias',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.lightbulb),
-              label: 'Curiosidades',
             ),
           ],
           currentIndex: _selectedIndex,
